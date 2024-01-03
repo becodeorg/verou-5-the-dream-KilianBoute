@@ -12,8 +12,8 @@
     $amount = $currency = $result = "";
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if (empty($_POST["amount"])) {
-            echo "Please enter an amount.";
+        if (empty($_POST["amount"]) || !is_numeric($_POST["amount"])) {
+            echo "Please enter a numeric amount.";
         } else {
             $amount = $_POST["amount"];
             $currency = $_POST["targetCurrency"];
@@ -26,6 +26,7 @@
             ];
 
             $result = $amount / $conversionRates[$currency];
+            $resultRounded = number_format((float)$result, 2, '.', '');
           
         }
     }
@@ -44,7 +45,7 @@
     </form>
     <?php 
     echo "Amount: " . $amount . " " . $currency . "<br>";
-    echo "Result: €" . $result;
+    echo "Result: €" . $resultRounded;
     ?>
 </body>
 </html>

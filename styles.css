@@ -1,6 +1,11 @@
 * {
-  background-color: rgb(8, 16, 37);
-  color: #3fdf31;
+  background: repeating-linear-gradient(
+    rgb(4, 10, 26),
+    rgb(120, 158, 54) 20px,
+    rgb(255, 22, 22) 10px,
+    rgb(0, 72, 255) 40px
+  );
+  color: #49ef3a;
 }
 
 form {
@@ -18,4 +23,33 @@ body {
   text-align: center;
   border: 5px solid rgb(191, 255, 62);
   padding: 1rem;
+}
+
+body::before {
+  content: "€";
+  font-size: 100px;
+  position: absolute;
+  left: 100px;
+  top: 300px;
+  transform: rotate(33deg);
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+  color: rgb(255, 255, 77);
+}
+
+body::after {
+  content: "$";
+  font-size: 100px;
+  position: absolute;
+  left: 500px;
+  top: 270px;
+  transform: rotate(-23deg);
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+  color: rgb(3, 190, 28);
+}
+
+body:hover::after,
+body:hover::before {
+  transform: rotateY(180deg);
 }
