@@ -8,14 +8,14 @@
 <body>
     <?php
     
-    $amount = $targetCurrency = $result = "";
+    $amount = $currency = $result = "";
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (empty($_POST["amount"])) {
             echo "Please enter an amount.";
         } else {
             $amount = $_POST["amount"];
-            $targetCurrency = $_POST["targetCurrency"];
+            $currency = $_POST["targetCurrency"];
 
             $conversionRates = [
                 'USD' => 1.10,
@@ -24,15 +24,14 @@
                 'Kyrgyzstanian Som' => 97.87
             ];
 
-            $result = $amount * $conversionRates[$targetCurrency];
+            $result = $amount / $conversionRates[$currency];
           
         }
     }
     ?>
     <form method="POST">
-        <label for="amount"> Euro amount: </label>
+        <label for="amount"> Amount: </label>
         <input type="text" name="amount">
-        <label for="targetCurrency"> To:</label> 
         <select name="targetCurrency" id="currencySelect">
             <option value="USD">USD</option>
             <option value="GBP">GBP</option>
@@ -42,9 +41,8 @@
         <input type="submit" name="submit" value="submit">
     </form>
     <?php 
-    echo "Amount: €" . $amount . "<br>";
-    echo "To: " . $targetCurrency . "<br>";
-    echo "Result: " . $result;
+    echo "Amount: " . $amount . " " . $currency . "<br>";
+    echo "Result: €" . $result;
     ?>
 </body>
 </html>
