@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <?php
@@ -29,6 +30,7 @@
         }
     }
     ?>
+    <h1>CURRENCY CONVERTER</h1>
     <form method="POST">
         <label for="amount"> Amount: </label>
         <input type="text" name="amount">
